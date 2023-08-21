@@ -10,6 +10,9 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
+  onClick = e => {
+    const { value } = e.target.attributes.option;
+  };
   // handleIncrement = () => {this.setState(prevState => {
   //   value: prevState.value + 1;
   // });}
@@ -22,13 +25,20 @@ class App extends Component {
       <div
         style={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
         }}
       >
-        <Section title="Please leave feedback"></Section>
+        <Section title="Please leave feedback">
+          <FeedbackOption
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.onClick}
+          ></FeedbackOption>
+        </Section>
+        <Statistics></Statistics>
       </div>
     );
   }
