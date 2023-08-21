@@ -20,7 +20,7 @@ class Statistics extends Component {
           Total: <span>{total}</span>
         </li>
         <li>
-          Positive feedback: <span>{positivePercentage}</span>
+          Positive feedback: <span>{positivePercentage}%</span>
         </li>
       </List>
     );
