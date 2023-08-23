@@ -11,13 +11,14 @@ class App extends Component {
     bad: 0,
   };
 
-  onClick = e => {
-    const { value } = e.target.attributes.option;
-    this.setState({ [value]: this.state[value] + 1 });
+  onClick = option => {
+    this.setState({ [option]: this.state[option] + 1 });
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    return Object.values(this.state).reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
   };
 
   countPositiveFeedbackPercentage = () => {
@@ -42,7 +43,7 @@ class App extends Component {
       >
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.onClick}
           />
         </Section>
